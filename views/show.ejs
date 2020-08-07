@@ -1,0 +1,83 @@
+<% include partials/header %>
+
+<div class="container">
+	<div class="row">
+		<div class="col-md-3 col-sml-6">
+			<p class="lead">Yelp Camp</p>
+			<div class="list-group">
+				<li class="list-group-item">Info</li>
+				<li class="list-group-item">Info</li>
+				<li class="list-group-item">Info</li>
+			</div>	
+		</div>
+		
+		<div class="col-md-9 col">
+			
+			<div class="thumbnail">
+				<div class="caption-full">
+					<h2><%= campground.name %></h2>
+				</div>
+				<img src="<%= campground.image %>">
+				<p><%= campground.description %></p>
+				<p><em>Submitted by: <%= campground.author.username %></em></p>
+				
+				<% if(currentUser && campground.author.id.equals(currentUser._id)) { %>
+					<a href="/campground/<%= campground._id %>/edit" class = "btn btn-primary">EDIT</a>
+					<form class="delete-form" action="/campgrounds/<%= campground._id %>?_method=DELETE" method="POST">
+						<button class="btn btn-danger">Delete</button>
+					</form>
+				<% } %>
+				
+				
+			</div>
+			
+			<div class="well">
+				
+					<h4>COMMENTS<span id="button" class="pull-right"><a href="/campground/<%= campground._id %>/comments/new" class="btn btn-primary">Add comment</a></span></h4>
+				
+					<hr>
+				
+					<% campground.comments.forEach(function(comment){ %>
+						<div class="row">
+							<div class="col-md-12">
+								<strong><%= comment.author.username %></strong>
+								<span class="pull-right">10 days ago</span>
+								<p><%= comment.text %></p>
+								
+								<% if(currentUser && comment.author.id.equals(currentUser._id)){ %>
+									<a href="/campgrounds/<%= campground._id %>/comments/<%= comment._id %>/edit" class="btn btn-xs btn-warning">Edit comment</a>
+								<form class="delete-form" action="/campgrounds/<%= campground._id %>/comments/<%= comment._id %>?_method=DELETE" method="POST">
+									<button class="btn btn-xs btn-danger">Delete</button>
+								</form>
+								<% } %> 
+								
+								
+							</div>
+						</div>		
+					<% }); %>
+				</div>
+			
+			
+				
+				
+				
+			
+			
+			
+
+
+			
+		</div>
+	</div>	
+</div>
+
+
+
+
+
+
+
+
+
+
+<% include partials/footer %>
