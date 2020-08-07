@@ -10,13 +10,16 @@ var express = require("express"),
 	Comment = require("./models/comment"),
 	User = require("./models/user");
 	// seedDB = require("./seed");
+
+	require('dotenv').config({path: __dirname + '/.env'});
 	
 var commentRoutes = require("./routes/comments"),
 	campgroundRoutes = require("./routes/campgrounds"),
 	authRoutes = require("./routes/index");
 
-mongoose.connect("mongodb://localhost/yelp_camp", { useNewUrlParser: true, useUnifiedTopology: true });
-// mongoose.connect("mongodb+srv://USER:<password>@cluster0.slzgg.mongodb.net/yelp_camp?retryWrites=true&w=majority", { useNewUrlParser: true, useUnifiedTopology: true });
+// mongoose.connect("mongodb://localhost/yelp_camp", { useNewUrlParser: true, useUnifiedTopology: true });
+
+mongoose.connect( process.env.DATABASEURL,{ useNewUrlParser: true, useUnifiedTopology: true });
 
 var app = express();
 
@@ -83,6 +86,6 @@ passport.deserializeUser(User.deserializeUser());
 // 	];
 				 
 //Start the server
-app.listen(3000,function(){
+app.listen(process.env.PORT || 3000,function(){
 	console.log("Listening");
 });
