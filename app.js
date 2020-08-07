@@ -83,6 +83,6 @@ passport.deserializeUser(User.deserializeUser());
 // 	];
 				 
 //Start the server
-app.listen(process.env.PORT || 3000,function(){
+app.listen(process.env.PORT || 3000, function(){
 	console.log("Listening");
 });
