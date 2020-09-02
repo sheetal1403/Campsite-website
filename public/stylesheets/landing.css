@@ -75,3 +75,9 @@ body {
       opacity: 0
     }
   }
+
+.footer{
+  position: absolute;
+  bottom: 0;
+  padding: 10px;
+}

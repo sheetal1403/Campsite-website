@@ -18,7 +18,7 @@
 					<h2><%= campground.name %></h2>
 				</div>
 				<img src="<%= campground.image %>">
-				<p><%= campground.description %></p>
+				<p style="margin-top: 50px"><%= campground.description %></p>
 				<p><em>Submitted by: <%= campground.author.username %></em></p>
 				
 				<% if(currentUser && campground.author.id.equals(currentUser._id)) { %>
