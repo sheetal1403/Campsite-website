@@ -5,15 +5,13 @@ It is built using NodeJS Express framework, MongoDB and ejs (emebedded Javascrip
 ## Project Preview
 https://still-dusk-92172.herokuapp.com/
 
+## Avg time duration
+2 months
 
 ## Snapshots
 
 ### Main page
 ![Main page](website-images/MainPage.PNG)
-
-
-
-
 
 ### Single Campground
 ![Main page](website-images/SingleCamp.PNG)
